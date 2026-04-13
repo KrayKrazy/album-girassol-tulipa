@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <style>
-    /* ===== RESET & BASE ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -34,7 +33,7 @@
       overflow-x: hidden;
     }
 
-    /* ===== FLOATING PETALS ===== */
+    /* FLOATING PETALS */
     .petals-layer {
       position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
     }
@@ -51,7 +50,7 @@
       100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
     }
 
-    /* ===== HERO ===== */
+    /* HERO */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -79,7 +78,6 @@
       pointer-events: none;
     }
 
-    /* Big flower illustrations */
     .hero-flower {
       position: absolute;
       font-size: clamp(5rem, 14vw, 11rem);
@@ -121,8 +119,8 @@
       animation: fadeDown 1s ease .1s both;
     }
     .hero-title .name-sun { color: var(--sunflower-deep); }
-    .hero-title .name-tul { color: var(--tulip);         }
-    .hero-title .amp       { color: var(--green-leaf);    font-style: italic; }
+    .hero-title .name-tul { color: var(--tulip);          }
+    .hero-title .amp       { color: var(--green-leaf); font-style: italic; }
 
     .hero-phrase {
       margin-top: 1.2rem;
@@ -138,10 +136,7 @@
       50%       { transform: scale(1.3); }
     }
 
-    .hero-cta {
-      margin-top: 2.5rem;
-      animation: fadeDown 1s ease .4s both;
-    }
+    .hero-cta { margin-top: 2.5rem; animation: fadeDown 1s ease .4s both; }
     .btn-scroll {
       display: inline-flex;
       align-items: center;
@@ -168,12 +163,13 @@
       to   { opacity: 1; transform: translateY(0);     }
     }
 
-    /* ===== LEGEND BANNER ===== */
+    /* LEGEND */
     .legend-banner {
       position: relative; z-index: 1;
       display: flex;
       justify-content: center;
       gap: 3rem;
+      flex-wrap: wrap;
       padding: 2rem 1rem;
       background: linear-gradient(90deg, #fffbe8, #fff6f9, #fffbe8);
       border-top: 3px solid var(--sunflower);
@@ -188,14 +184,13 @@
     .legend-label { font-weight: 700; }
     .legend-label small { display: block; font-size: .8rem; font-weight: 400; color: var(--text-mid); }
 
-    /* ===== GALLERY ===== */
+    /* GALLERY */
     .gallery-section {
       position: relative; z-index: 1;
       padding: 4rem 1.5rem 6rem;
       max-width: 1400px;
       margin: 0 auto;
     }
-
     .section-title {
       text-align: center;
       font-family: 'Playfair Display', serif;
@@ -206,7 +201,6 @@
     }
     .section-title span { color: var(--tulip); }
 
-    /* Masonry grid */
     .gallery-grid {
       columns: 3 320px;
       column-gap: 1.2rem;
@@ -224,38 +218,22 @@
       transition: transform .3s, box-shadow .3s;
       position: relative;
       background: #fff;
-      animation: cardIn .6s ease both;
     }
     .photo-card:hover {
       transform: translateY(-6px) scale(1.015);
       box-shadow: 0 16px 40px rgba(44,26,14,.22);
     }
 
-    @keyframes cardIn {
-      from { opacity: 0; transform: translateY(30px) scale(.96); }
-      to   { opacity: 1; transform: translateY(0)   scale(1);   }
-    }
-
     .photo-card img, .photo-card video {
-      width: 100%;
-      display: block;
-      object-fit: cover;
+      width: 100%; display: block; object-fit: cover;
     }
 
-    /* Flower overlay on hover */
     .card-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(44,26,14,.72) 0%,
-        transparent 60%
-      );
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(44,26,14,.72) 0%, transparent 60%);
       opacity: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: flex-end;
       padding: 1rem;
       transition: opacity .3s;
       border-radius: 18px;
@@ -271,10 +249,8 @@
       text-shadow: 0 2px 8px rgba(0,0,0,.5);
     }
 
-    /* corner tag */
     .flower-tag {
-      position: absolute;
-      top: .7rem; right: .7rem;
+      position: absolute; top: .7rem; right: .7rem;
       background: rgba(255,255,255,.9);
       border-radius: 50px;
       padding: .2rem .6rem;
@@ -283,31 +259,26 @@
       backdrop-filter: blur(4px);
     }
 
-    /* ===== LIGHTBOX ===== */
+    /* LIGHTBOX */
     .lightbox {
       display: none;
       position: fixed; inset: 0; z-index: 1000;
       background: rgba(20,10,5,.92);
       backdrop-filter: blur(8px);
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 1rem;
-      padding: 1rem;
+      align-items: center; justify-content: center;
+      flex-direction: column; gap: 1rem; padding: 1rem;
     }
     .lightbox.open { display: flex; }
 
     .lightbox-media {
-      max-width: 90vw;
-      max-height: 78vh;
+      max-width: 90vw; max-height: 78vh;
       border-radius: 16px;
       box-shadow: 0 20px 60px rgba(0,0,0,.8);
       object-fit: contain;
     }
     .lightbox-phrase {
       font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-style: italic;
+      font-size: 1.3rem; font-style: italic;
       color: #ffe8b0;
       text-shadow: 0 2px 8px rgba(0,0,0,.6);
     }
@@ -325,8 +296,7 @@
       border: 2px solid rgba(255,255,255,.25);
       backdrop-filter: blur(6px);
       color: #fff; border-radius: 50%;
-      width: 52px; height: 52px;
-      font-size: 1.5rem;
+      width: 52px; height: 52px; font-size: 1.5rem;
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       transition: background .2s, transform .2s;
@@ -335,7 +305,7 @@
     .lightbox-nav.prev { left: 1rem; }
     .lightbox-nav.next { right: 1rem; }
 
-    /* ===== FOOTER ===== */
+    /* FOOTER */
     footer {
       position: relative; z-index: 1;
       text-align: center;
@@ -346,24 +316,20 @@
     footer .f-flowers { font-size: 3rem; margin-bottom: .5rem; }
     footer .f-phrase {
       font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      font-style: italic;
-      color: var(--sunflower);
-      margin-bottom: .5rem;
+      font-size: 1.6rem; font-style: italic;
+      color: var(--sunflower); margin-bottom: .5rem;
     }
     footer .f-sub { font-size: .9rem; opacity: .7; color: var(--tulip-light); }
 
-    /* ===== SCROLL REVEAL ===== */
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s, transform .7s; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
-<!-- Floating petals / emojis -->
 <div class="petals-layer" id="petals"></div>
 
-<!-- ======= HERO ======= -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-flower sunflower" aria-hidden="true">🌻</div>
   <div class="hero-flower tulip"     aria-hidden="true">🌷</div>
@@ -375,16 +341,14 @@
     <span class="name-tul">Tulipa</span>
   </h1>
   <p class="hero-phrase">
-    <span class="heart">♥</span>
-    &nbsp;Juntos a gente pode tudo&nbsp;
-    <span class="heart">♥</span>
+    <span class="heart">♥</span>&nbsp;Juntos a gente pode tudo&nbsp;<span class="heart">♥</span>
   </p>
   <div class="hero-cta">
     <a href="#galeria" class="btn-scroll">Ver nossas fotos 📸</a>
   </div>
 </section>
 
-<!-- ======= LEGEND ======= -->
+<!-- LEGEND -->
 <div class="legend-banner" role="note">
   <div class="legend-item">
     <span class="legend-icon">🌻</span>
@@ -400,26 +364,24 @@
   </div>
 </div>
 
-<!-- ======= GALLERY ======= -->
+<!-- GALLERY -->
 <section class="gallery-section" id="galeria">
   <h2 class="section-title reveal">Nossos <span>Momentos</span> ✨</h2>
   <div class="gallery-grid" id="grid"></div>
 </section>
 
-<!-- ======= LIGHTBOX ======= -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizar foto">
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
   <button class="lightbox-close" id="lbClose" aria-label="Fechar">✕</button>
   <button class="lightbox-nav prev" id="lbPrev" aria-label="Anterior">‹</button>
   <button class="lightbox-nav next" id="lbNext" aria-label="Próxima">›</button>
-
-  <!-- filled by JS -->
   <div class="lightbox-flowers" id="lbFlowers">🌻🌷</div>
-  <img  id="lbImg"   class="lightbox-media" src="" alt="Foto do casal" style="display:none"/>
-  <video id="lbVid"  class="lightbox-media" controls style="display:none"></video>
+  <img   id="lbImg" class="lightbox-media" src="" alt="Foto do casal" style="display:none"/>
+  <video id="lbVid" class="lightbox-media" controls style="display:none"></video>
   <p class="lightbox-phrase">Juntos a gente pode tudo 💛</p>
 </div>
 
-<!-- ======= FOOTER ======= -->
+<!-- FOOTER -->
 <footer>
   <div class="f-flowers">🌻💛🌷</div>
   <p class="f-phrase">"Juntos a gente pode tudo"</p>
@@ -428,16 +390,15 @@
 
 <script>
 /* =========================================================
-   MEDIA LIST
+   MEDIA LIST — apenas os arquivos presentes na pasta
    ========================================================= */
 const mediaItems = [
   { src: "WhatsApp Image 2026-04-12 at 21.18.34 (1).jpeg", type: "img" },
   { src: "WhatsApp Image 2026-04-12 at 21.18.34.jpeg",     type: "img" },
   { src: "WhatsApp Image 2026-04-12 at 21.18.35.jpeg",     type: "img" },
-  { src: "WhatsApp Image 2026-04-12 at 21.18.36.mp4",      type: "vid" },
+  { src: "WhatsApp Video 2026-04-12 at 21.18.36.mp4",      type: "vid" },
   { src: "WhatsApp Image 2026-04-12 at 21.18.37.jpeg",     type: "img" },
   { src: "WhatsApp Image 2026-04-12 at 21.18.38 (1).jpeg", type: "img" },
-  { src: "WhatsApp Image 2026-04-12 at 21.18.38 (2).jpeg", type: "img" },
   { src: "WhatsApp Image 2026-04-12 at 21.18.38.jpeg",     type: "img" },
   { src: "WhatsApp Image 2026-04-12 at 21.18.39 (1).jpeg", type: "img" },
   { src: "WhatsApp Image 2026-04-12 at 21.18.39 (2).jpeg", type: "img" },
@@ -449,49 +410,40 @@ const mediaItems = [
   { src: "WhatsApp Image 2026-04-12 at 21.18.41 (3).jpeg", type: "img" },
   { src: "WhatsApp Image 2026-04-12 at 21.18.41 (4).jpeg", type: "img" },
   { src: "WhatsApp Image 2026-04-12 at 21.18.41.jpeg",     type: "img" },
-  { src: "WhatsApp Image 2026-04-12 at 21.18.42 (1).jpeg", type: "img" },
   { src: "WhatsApp Image 2026-04-12 at 21.18.42 (2).jpeg", type: "img" },
-  { src: "WhatsApp Image 2026-04-12 at 21.18.42.jpeg",     type: "img" },
 ];
 
-/* rotating flower tags */
-const TAGS = ["🌻", "🌷", "💛", "🌿", "🌸", "✨", "🌻🌷"];
-const PAIRS = ["🌻🌷", "💛🌿", "🌸✨", "🌻💛", "🌷🌿"];
+const TAGS  = ["🌻","🌷","💛","🌿","🌸","✨","🌻🌷"];
+const PAIRS = ["🌻🌷","💛🌿","🌸✨","🌻💛","🌷🌿"];
 
-/* =========================================================
-   BUILD GRID
-   ========================================================= */
-const grid    = document.getElementById("grid");
-let imgIndex  = 0; // lightbox index (imgs only)
+/* BUILD GRID */
+const grid = document.getElementById("grid");
 
 function buildGrid() {
   mediaItems.forEach((item, idx) => {
     const card = document.createElement("div");
-    card.className  = "photo-card reveal";
+    card.className = "photo-card reveal";
     card.style.animationDelay = `${idx * 0.06}s`;
 
     const tag = document.createElement("div");
-    tag.className  = "flower-tag";
+    tag.className   = "flower-tag";
     tag.textContent = TAGS[idx % TAGS.length];
 
     const overlay = document.createElement("div");
     overlay.className = "card-overlay";
-    overlay.innerHTML = `
-      <div class="card-flowers">${PAIRS[idx % PAIRS.length]}</div>
-      <div class="card-phrase">Juntos a gente pode tudo</div>
-    `;
+    overlay.innerHTML = `<div class="card-flowers">${PAIRS[idx % PAIRS.length]}</div><div class="card-phrase">Juntos a gente pode tudo</div>`;
 
     if (item.type === "img") {
       const img = document.createElement("img");
-      img.src   = encodeURIComponent(item.src).replace(/%20/g, "%20");
-      img.alt   = "Foto do casal";
+      img.src     = item.src;
+      img.alt     = "Foto do casal";
       img.loading = "lazy";
       card.appendChild(img);
     } else {
       const vid = document.createElement("video");
-      vid.src    = encodeURIComponent(item.src).replace(/%20/g, "%20");
-      vid.muted  = true;
-      vid.loop   = true;
+      vid.src     = item.src;
+      vid.muted   = true;
+      vid.loop    = true;
       vid.preload = "metadata";
       vid.style.maxHeight = "260px";
       vid.addEventListener("mouseenter", () => vid.play());
@@ -501,15 +453,12 @@ function buildGrid() {
 
     card.appendChild(tag);
     card.appendChild(overlay);
-
     card.addEventListener("click", () => openLightbox(idx));
     grid.appendChild(card);
   });
 }
 
-/* =========================================================
-   LIGHTBOX
-   ========================================================= */
+/* LIGHTBOX */
 let currentIdx = 0;
 const lightbox = document.getElementById("lightbox");
 const lbImg    = document.getElementById("lbImg");
@@ -530,14 +479,12 @@ function closeLightbox() {
 function showMedia(idx) {
   const item = mediaItems[idx];
   lbFlowers.textContent = PAIRS[idx % PAIRS.length];
-  const src = item.src; // local path
   if (item.type === "img") {
-    lbImg.src = src; lbImg.style.display = "block";
+    lbImg.src = item.src; lbImg.style.display = "block";
     lbVid.style.display = "none"; lbVid.pause();
   } else {
-    lbVid.src = src; lbVid.style.display = "block";
-    lbImg.style.display = "none";
-    lbVid.play();
+    lbVid.src = item.src; lbVid.style.display = "block";
+    lbImg.style.display = "none"; lbVid.play();
   }
 }
 function navigate(dir) {
@@ -551,14 +498,12 @@ document.getElementById("lbNext").addEventListener("click", () => navigate(1));
 lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLightbox(); });
 document.addEventListener("keydown", e => {
   if (!lightbox.classList.contains("open")) return;
-  if (e.key === "Escape")      closeLightbox();
-  if (e.key === "ArrowLeft")   navigate(-1);
-  if (e.key === "ArrowRight")  navigate(1);
+  if (e.key === "Escape")     closeLightbox();
+  if (e.key === "ArrowLeft")  navigate(-1);
+  if (e.key === "ArrowRight") navigate(1);
 });
 
-/* =========================================================
-   FLOATING PETALS
-   ========================================================= */
+/* FLOATING PETALS */
 const EMOJIS = ["🌻","🌷","💛","🌿","🌸","✨"];
 function spawnPetal() {
   const el = document.createElement("span");
@@ -566,8 +511,8 @@ function spawnPetal() {
   el.textContent = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
   el.style.left  = Math.random() * 100 + "vw";
   el.style.fontSize = (1.2 + Math.random() * 1.4) + "rem";
-  const dur  = 8 + Math.random() * 10;
-  const del  = Math.random() * 5;
+  const dur = 8 + Math.random() * 10;
+  const del = Math.random() * 5;
   el.style.animationDuration = dur + "s";
   el.style.animationDelay    = del + "s";
   document.getElementById("petals").appendChild(el);
@@ -576,22 +521,13 @@ function spawnPetal() {
 setInterval(spawnPetal, 700);
 for (let i = 0; i < 10; i++) spawnPetal();
 
-/* =========================================================
-   SCROLL REVEAL
-   ========================================================= */
+/* SCROLL REVEAL */
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); } });
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); });
 }, { threshold: 0.1 });
 
-function watchReveal() {
-  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-}
-
-/* =========================================================
-   INIT
-   ========================================================= */
 buildGrid();
-watchReveal();
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
